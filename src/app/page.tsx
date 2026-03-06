@@ -1,21 +1,29 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Search, Calendar, Users, MapPin, Coffee, ShieldCheck, Wifi, Tv, Wind, Star, CheckCircle2, ChevronRight, ArrowRight } from "lucide-react";
 import { siteData } from "@/lib/data";
 
 export default function Home() {
+    const { scrollY } = useScroll();
+    const bgY = useTransform(scrollY, [0, 1000], ["0%", "30%"]);
+    const textY = useTransform(scrollY, [0, 1000], ["0%", "50%"]);
+    const textOpacity = useTransform(scrollY, [0, 600], [1, 0]);
+
     return (
         <div className="flex flex-col">
             {/* Hero Section */}
             <section className="relative h-screen flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-black/40 z-10" />
-                <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform hover:scale-105 duration-[20s]"
-                    style={{ backgroundImage: "url('/images/image copy.png')" }}
+                <div className="absolute inset-0 bg-black/60 z-10" />
+                <motion.div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: "url('/images/image copy.png')", y: bgY }}
                 />
 
-                <div className="relative z-20 text-center text-ivory max-w-5xl px-6">
+                <motion.div
+                    style={{ y: textY, opacity: textOpacity }}
+                    className="relative z-20 text-center text-ivory max-w-5xl px-6"
+                >
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -31,7 +39,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-6xl md:text-8xl font-serif mb-8 leading-[1.1]"
+                        className="text-5xl md:text-7xl lg:text-8xl font-serif mb-6 md:mb-8 leading-[1.1]"
                     >
                         Historic Elegance <br /> <span className="italic text-sage font-light">in Northern Italy</span>
                     </motion.h1>
@@ -40,7 +48,7 @@ export default function Home() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-lg md:text-2xl font-light mb-12 tracking-wide text-ivory/90 max-w-2xl mx-auto leading-relaxed"
+                        className="text-lg md:text-xl lg:text-2xl font-light mb-12 tracking-wide text-ivory/90 max-w-2xl mx-auto leading-relaxed px-4"
                     >
                         Located steps from Accademia Carrara and GAMeC, Belle Arti offers
                         authentic Bergamo living under timeless wood-beamed ceilings.
@@ -100,7 +108,7 @@ export default function Home() {
                         <div className="space-y-12 pl-12">
                             <div className="space-y-4">
                                 <span className="text-terracotta font-black tracking-[0.4em] uppercase text-[10px]">Since the 18th Century</span>
-                                <h2 className="text-5xl md:text-7xl font-serif text-walnut leading-none">A House <br />of <span className="italic text-sage">Arts & History.</span></h2>
+                                <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif text-walnut leading-none">A House <br />of <span className="italic text-sage">Arts & History.</span></h2>
                             </div>
                             <p className="text-xl text-walnut/70 leading-relaxed font-light">
                                 {siteData.description}
@@ -133,7 +141,7 @@ export default function Home() {
                     <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
                         <div className="space-y-4">
                             <span className="text-terracotta font-black tracking-[0.4em] uppercase text-[10px]">Our Sanctuaries</span>
-                            <h2 className="text-5xl md:text-6xl font-serif text-walnut">Charming Spaces</h2>
+                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-walnut">Charming Spaces</h2>
                         </div>
                         <p className="text-walnut/40 max-w-xs text-[10px] font-black uppercase tracking-widest leading-relaxed">
                             Every detail is curated to reflect the rich heritage of Bergamo under authentic historical architectural elements.
@@ -182,7 +190,7 @@ export default function Home() {
                         <div className="grid md:grid-cols-2 gap-20 items-center">
                             <div className="space-y-8">
                                 <span className="text-terracotta font-black tracking-[0.4em] uppercase text-[10px]">What Guests Say</span>
-                                <h2 className="text-5xl md:text-6xl font-serif leading-tight">Heritage Hospitality <span className="italic text-sage">Perfected.</span></h2>
+                                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif leading-tight">Heritage Hospitality <span className="italic text-sage">Perfected.</span></h2>
                                 <div className="flex items-center gap-6">
                                     <div className="text-7xl font-serif text-sage">{siteData.rating}</div>
                                     <div className="space-y-1">
@@ -241,7 +249,7 @@ export default function Home() {
                 <div className="container mx-auto px-6 text-center space-y-12">
                     <MapPin size={48} className="mx-auto text-terracotta/40" />
                     <div className="space-y-4 max-w-3xl mx-auto">
-                        <h2 className="text-5xl font-serif text-walnut">At the Heart of Bergamo's Art</h2>
+                        <h2 className="text-4xl md:text-5xl font-serif text-walnut">At the Heart of Bergamo's Art</h2>
                         <p className="text-xl text-walnut/60 font-light leading-relaxed uppercase tracking-tighter">
                             {siteData.address}
                         </p>
