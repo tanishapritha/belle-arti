@@ -73,7 +73,7 @@ export default function Home() {
                             <span className="text-[10px] text-ivory/60">Guest Rating</span>
                         </div>
                     </motion.div>
-                </div>
+                </motion.div>
 
                 {/* Bottom Scroll Indicator */}
                 <motion.div
