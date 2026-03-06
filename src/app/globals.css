@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ivory: #FAF7F2;
+  --terracotta: #C4693A;
+  --walnut: #3B2A1A;
+  --sage: #8A9E7A;
+  --cream: #FDF6EC;
+}
+
+body {
+  background-color: var(--ivory);
+  color: var(--walnut);
+  font-family: 'Outfit', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+.linen-texture {
+  background-image: url("https://www.transparenttextures.com/patterns/linen-design.png");
+}
+
+.vintage-shadow {
+  box-shadow: 0 4px 6px -1px rgba(59, 42, 26, 0.1), 0 2px 4px -1px rgba(59, 42, 26, 0.06);
+}
+
+.btn-terracotta {
+  @apply bg-terracotta text-ivory px-6 py-2 rounded-lg hover:brightness-110 transition-all;
+}
+
+.card-vintage {
+  @apply bg-cream rounded-xl border border-walnut/10 overflow-hidden vintage-shadow transition-transform hover:-translate-y-1;
+}

@@ -1,0 +1,20 @@
+### API KEYS & SECRETS TRACKER
+
+#### PROVIED BY USER
+- DATABASE_URL: ✅ (NeonDB URL)
+- NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ✅
+- CLERK_SECRET_KEY: ✅
+
+#### MISSING / PLACEHOLDERS
+- CLERK_WEBHOOK_SECRET: ❌ (Required for User Sync)
+- NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ❌ (Required for Payments)
+- STRIPE_SECRET_KEY: ❌ (Required for Payments)
+- STRIPE_WEBHOOK_SECRET: ❌ (Required for Booking Confirmation)
+
+#### DUMMY LOGIC / COMPONENTS
+- Date Picker: Client-side UI only for now.
+- Room Images: Mapped to real provided local images (/public/images).
+- Stripe Integration: UI elements only, API logic will be mocked until keys are provided.
+- Clerk Auth: Middleware present but protected routes might need adjustment based on final User model sync.
+- Admin Dashboard: Mocked stats and data.
+- Database / Prisma: SKIPPED FOR NOW. Using hardcoded state in src/lib/data.ts for speed and frontend validation.
